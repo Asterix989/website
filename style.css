@@ -1,0 +1,109 @@
+/* style.css */
+
+/* Стили для тела документа, чтобы убрать отступы и задать фон/цвет */
+body {
+    margin: 0;
+    background-color: #0D447C; /* Твой цвет фона */
+    font-family: Arial, sans-serif; /* Простой шрифт */
+    color: #FFFFFF; /* Твой цвет текста */
+    padding: 10px; /* Небольшой отступ для бургера */
+    box-sizing: border-box; /* Учитываем padding в размере */
+}
+
+/* 1. Скрываем чекбокс, который будет управлять меню */
+.burger-checkbox {
+    display: none;
+}
+
+/* 2. Стили для иконки бургера (три полоски) */
+.burger-icon {
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    position: relative; /* Для позиционирования полосок внутри */
+    z-index: 2; /* Убедимся, что бургер над меню */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px; /* Для удобства клика */
+}
+
+.burger-icon span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #FFFFFF; /* Цвет полосок бургера */
+    border-radius: 2px;
+    transition: all 0.3s ease; /* Плавный переход для анимации */
+}
+
+/* 3. Контейнер для навигационных ссылок */
+.menu-links {
+    display: none; /* Изначально скрываем меню */
+    flex-direction: column; /* Ссылки в столбец */
+    width: 100%;
+    position: absolute; /* Позволяет меню раскрыться поверх других элементов */
+    top: 0; /* Привязываем к верху фрейма */
+    left: 0; /* Привязываем к левому краю фрейма */
+    background-color: #0D447C; /* Фон меню, такой же как у body */
+    padding-top: 50px; /* Отступ сверху, чтобы меню не перекрывало бургер */
+    box-sizing: border-box;
+    height: 100vh; /* Меню занимает всю высоту viewport (видимой области фрейма) */
+    overflow-y: auto; /* Если ссылок много, появится прокрутка */
+    z-index: 1; /* Меню под бургером, но над остальным содержимым */
+}
+
+/* Стили для каждой ссылки */
+.menu-links a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 15px 20px; /* Отступы для ссылок */
+    display: block; /* Каждая ссылка занимает всю ширину */
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.menu-links a:hover {
+    background-color: #0A325E; /* Цвет фона при наведении */
+}
+
+/* 4. Когда чекбокс активирован, показываем меню */
+.burger-checkbox:checked ~ .menu-links {
+    display: flex; /* Показываем меню */
+}
+
+/* 5. Анимация иконки бургера в "крестик" при открытии */
+.burger-checkbox:checked ~ .burger-icon span:nth-child(1) {
+    transform: translateY(11px) rotate(45deg); /* Верхняя полоска */
+}
+.burger-checkbox:checked ~ .burger-icon span:nth-child(2) {
+    opacity: 0; /* Средняя полоска исчезает */
+}
+.burger-checkbox:checked ~ .burger-icon span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg); /* Нижняя полоска */
+}
+
+/* Медиа-запрос: для экранов шире 600px бургер-меню не нужно */
+/* На таких экранах показываем ссылки сразу */
+@media (min-width: 678px) {
+    .burger-icon, .burger-checkbox {
+        display: none; /* Скрываем бургер */
+    }
+    .menu-links {
+        display: flex; /* Показываем меню всегда */
+        flex-direction: row; /* Ссылки в ряд */
+        justify-content: center; /* Центрируем ссылки */
+        position: static; /* Возвращаем к обычному потоку документа */
+        height: auto; /* Высота по содержимому */
+        padding-top: 0;
+    }
+    .menu-links a {
+        padding: 10px 15px; /* Отступы между ссылками */
+    }
+    body {
+        flex-direction: row; /* Располагаем элементы body в ряд */
+        justify-content: center; /* Центрируем по горизонтали */
+        padding: 0; /* Убираем отступ */
+    }
+}

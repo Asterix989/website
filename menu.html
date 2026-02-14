@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню</title>
+    <!-- Здесь мы подключаем стили из файла style.css -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Невидимый чекбокс, который будет переключать состояние меню -->
+    <input type="checkbox" id="burger-toggle" class="burger-checkbox">
+
+    <!-- Иконка бургера (три полоски), которая является меткой для чекбокса -->
+    <label for="burger-toggle" class="burger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+	
+	<br>
+	<br>
+	<br>
+    <!-- Контейнер с навигационными ссылками -->
+    <nav class="menu-links">
+        <a href="content.html" target="content">Главная</a>
+        <a href="СТНС.html" target="content">Средства тонкой настройки системы</a>
+        <a href="СРСР.html" target="content">Средства работы с реестром</a>
+        <a href="info.html" target="content">Справка</a>
+		<a href="#" target="content">Выбор ОС</a>
+		<a href="#" target="content">Выбор ФС и разметка диска</a>
+    </nav>
+</body>
+</html>
